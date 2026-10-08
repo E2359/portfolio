@@ -4,10 +4,13 @@
   --surface: #ffffff;
   --text: #152033;
   --muted: #5d6980;
-  --accent: #2859c5;
+  --color-accent: #2e5bc7;
+  --accent: var(--color-accent);
   --accent-dark: #173b8f;
+  --accent-soft: #eef3ff;
   --border: #d8e0ec;
   --shadow: 0 1rem 3rem rgba(26, 50, 90, 0.1);
+  accent-color: var(--color-accent);
 }
 
 * {
@@ -18,8 +21,8 @@ body {
   /* Set line height to 1.5 times the font size
      and use the OS's UI font as the website font. */
   font: 100%/1.5 system-ui;
-  max-width: 72rem;
-  margin: 0 auto;
+  max-width: 100ch;
+  margin-inline: auto;
   padding: 1rem;
   color: var(--text);
   background: var(--background);
@@ -28,23 +31,32 @@ body {
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  padding-block: 0.5rem 1rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid var(--border);
 }
 
 nav a {
-  padding: 0.45rem 0.7rem;
-  color: var(--accent);
+  flex: 1;
+  min-width: max-content;
+  padding: 0.65em 0.5em 0.3em;
+  color: inherit;
+  text-align: center;
   text-decoration: none;
-  border-radius: 0.4rem;
+  border-bottom: 0.35em solid transparent;
 }
 
 nav a:hover,
-nav a:focus-visible,
+nav a:focus-visible {
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  border-bottom-color: var(--color-accent);
+}
+
+nav a.current,
 nav a[aria-current="page"] {
-  color: #fff;
-  background: var(--accent);
+  color: var(--accent-dark);
+  font-weight: 750;
+  border-bottom-color: #aebbd0;
 }
 
 main {
@@ -54,14 +66,18 @@ main {
 
 h1,
 h2,
-h3 {
-  line-height: 1.2;
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  text-wrap: balance;
 }
 
 h1 {
   max-width: 14ch;
   margin-block: 0 1rem;
-  font-size: clamp(2.35rem, 8vw, 4.75rem);
+  font-size: clamp(3rem, 9vw, 4rem);
   letter-spacing: -0.04em;
 }
 
@@ -120,7 +136,6 @@ figcaption {
   font-size: 0.9rem;
 }
 
-.project-list,
 .resume-list {
   display: grid;
   gap: 1rem;
@@ -128,7 +143,6 @@ figcaption {
   list-style: none;
 }
 
-.card,
 article {
   padding: 1.1rem;
   background: var(--surface);
@@ -136,24 +150,54 @@ article {
   border-radius: 0.75rem;
 }
 
-.card h2,
 article h3 {
   margin-top: 0;
 }
 
-.card p:last-child,
 article > *:last-child {
   margin-bottom: 0;
 }
 
-.project-meta,
 time,
 .location {
   color: var(--muted);
 }
 
-.project-meta {
-  font-weight: 650;
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+  margin-top: 2rem;
+}
+
+.projects article {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  gap: 1em;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.projects h2,
+.projects p {
+  margin: 0;
+}
+
+.projects h2 {
+  font-size: 1.35rem;
+}
+
+.projects img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  border-radius: 0.55rem;
+}
+
+.projects p {
+  color: var(--muted);
 }
 
 .resume-header {
@@ -177,13 +221,18 @@ article ul {
 
 form {
   display: grid;
+  grid-template-columns: auto 1fr;
   gap: 1rem;
-  max-width: 38rem;
+  max-width: 42rem;
+  margin-top: 2rem;
 }
 
 label {
   display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   gap: 0.35rem;
+  align-items: center;
   font-weight: 650;
 }
 
@@ -209,6 +258,8 @@ textarea {
 }
 
 button {
+  grid-column: 1 / -1;
+  justify-self: start;
   width: fit-content;
   color: #fff;
   background: var(--accent);
@@ -226,11 +277,21 @@ button:focus-visible {
     padding: 2rem;
   }
 
-  .project-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   article {
     padding: 1.35rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  nav a {
+    flex-basis: 33%;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  label {
+    gap: 0.35rem;
   }
 }

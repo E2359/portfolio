@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title description">
+  <title id="title">Data visualization placeholder</title>
+  <desc id="description">A blue and teal abstract chart with bars, a line, and data points.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef3ff"/>
+      <stop offset="1" stop-color="#e5f8f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" rx="32" fill="url(#background)"/>
+  <g stroke="#c9d7ee" stroke-width="3">
+    <path d="M90 90v330h630" fill="none"/>
+    <path d="M90 330h630M90 240h630M90 150h630" opacity=".65"/>
+  </g>
+  <g fill="#2e5bc7" opacity=".9">
+    <rect x="145" y="280" width="70" height="140" rx="10"/>
+    <rect x="285" y="220" width="70" height="200" rx="10"/>
+    <rect x="425" y="250" width="70" height="170" rx="10"/>
+    <rect x="565" y="160" width="70" height="260" rx="10"/>
+  </g>
+  <path d="M180 245 320 175 460 205 600 115" fill="none" stroke="#148878" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+  <g fill="#fff" stroke="#148878" stroke-width="9">
+    <circle cx="180" cy="245" r="15"/>
+    <circle cx="320" cy="175" r="15"/>
+    <circle cx="460" cy="205" r="15"/>
+    <circle cx="600" cy="115" r="15"/>
+  </g>
+</svg>
