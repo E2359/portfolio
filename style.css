@@ -1,15 +1,15 @@
 :root {
-  color-scheme: light;
-  --background: #f5f8fc;
-  --surface: #ffffff;
-  --text: #152033;
-  --muted: #5d6980;
-  --color-accent: #2e5bc7;
+  color-scheme: light dark;
+  --background: light-dark(#f5f8fc, #101620);
+  --surface: light-dark(#ffffff, #182230);
+  --text: light-dark(#152033, #edf3ff);
+  --muted: light-dark(#5d6980, #adbad0);
+  --color-accent: light-dark(#2e5bc7, #8aafff);
   --accent: var(--color-accent);
-  --accent-dark: #173b8f;
-  --accent-soft: #eef3ff;
-  --border: #d8e0ec;
-  --shadow: 0 1rem 3rem rgba(26, 50, 90, 0.1);
+  --accent-dark: light-dark(#173b8f, #bed0ff);
+  --accent-soft: color-mix(in oklch, var(--color-accent), canvas 88%);
+  --border: light-dark(#d8e0ec, #344156);
+  --shadow: 0 1rem 3rem light-dark(rgba(26, 50, 90, 0.1), rgba(0, 0, 0, 0.28));
   accent-color: var(--color-accent);
 }
 
@@ -29,10 +29,12 @@ body {
 }
 
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   flex-wrap: wrap;
+  margin-top: 2.75rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-color);
 }
 
 nav a {
@@ -56,7 +58,28 @@ nav a.current,
 nav a[aria-current="page"] {
   color: var(--accent-dark);
   font-weight: 750;
-  border-bottom-color: #aebbd0;
+  border-bottom-color: var(--border-color);
+}
+
+.color-scheme {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  color: var(--muted);
+  font-size: 80%;
+  font-weight: 650;
+}
+
+.color-scheme select {
+  width: auto;
+  padding: 0.35rem 0.55rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
 }
 
 main {
@@ -227,7 +250,7 @@ form {
   margin-top: 2rem;
 }
 
-label {
+form > label {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: subgrid;
@@ -246,9 +269,17 @@ button {
   border-radius: 0.45rem;
 }
 
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
 input:focus,
-textarea:focus {
-  outline: 3px solid rgba(40, 89, 197, 0.2);
+textarea:focus,
+select:focus {
+  outline: 3px solid color-mix(in srgb, var(--accent) 25%, transparent);
   border-color: var(--accent);
 }
 
@@ -277,6 +308,11 @@ button:focus-visible {
     padding: 2rem;
   }
 
+  .color-scheme {
+    top: 1rem;
+    right: 2rem;
+  }
+
   article {
     padding: 1.35rem;
   }
@@ -291,7 +327,7 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  label {
+  form > label {
     gap: 0.35rem;
   }
 }
