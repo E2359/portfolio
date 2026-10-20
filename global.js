@@ -7,6 +7,68 @@ function $$(selector, context = document) {
 const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
 const BASE_PATH = isLocal ? '/' : '/portfolio/';
 
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+    throw error;
+  }
+}
+
+function escapeHTML(value = '') {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function resolveProjectImage(image = '') {
+  if (/^(?:https?:|data:|\/)/.test(image)) {
+    return image;
+  }
+
+  return `${BASE_PATH}${image}`;
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  if (!containerElement) {
+    console.warn('Project container was not found.');
+    return;
+  }
+
+  const safeHeadingLevel = /^h[1-6]$/.test(headingLevel) ? headingLevel : 'h2';
+  containerElement.replaceChildren();
+
+  for (const project of projects ?? []) {
+    const article = document.createElement('article');
+    const title = escapeHTML(project.title || 'Untitled project');
+    const description = escapeHTML(project.description || 'Description coming soon.');
+    const year = escapeHTML(project.year || 'In progress');
+    const image = escapeHTML(resolveProjectImage(project.image));
+
+    article.innerHTML = `
+      <${safeHeadingLevel}>${title}</${safeHeadingLevel}>
+      <img src="${image}" alt="Abstract chart thumbnail for ${title}">
+      <p class="project-year">${year}</p>
+      <p>${description}</p>
+    `;
+    containerElement.append(article);
+  }
+}
+
+export async function fetchGithubData(username) {
+  return fetchJSON(`https://api.github.com/users/${encodeURIComponent(username)}`);
+}
+
 const pages = [
   { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },

@@ -7,6 +7,7 @@
   <title>Ye Teng: Personal site and portfolio</title>
   <link rel="stylesheet" href="style.css">
   <script type="module" src="global.js"></script>
+  <script type="module" src="index.js"></script>
 </head>
 <body>
   <main>
@@ -29,6 +30,23 @@
       >
       <figcaption>Lake Tahoe, California</figcaption>
     </figure>
+
+    <section class="portfolio-section" aria-labelledby="latest-projects-title">
+      <p class="eyebrow">Selected work</p>
+      <h2 id="latest-projects-title">Latest projects</h2>
+      <div class="projects latest-projects" aria-live="polite">
+        <p class="loading-message">Loading projects…</p>
+      </div>
+      <p class="section-link"><a href="projects/">View all projects</a></p>
+    </section>
+
+    <section class="portfolio-section" aria-labelledby="github-stats-title">
+      <p class="eyebrow">Live from the GitHub API</p>
+      <h2 id="github-stats-title">GitHub profile</h2>
+      <div id="profile-stats" aria-live="polite">
+        <p class="loading-message">Loading GitHub statistics…</p>
+      </div>
+    </section>
   </main>
 </body>
 </html>

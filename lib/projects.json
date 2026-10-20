@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Sports Supplement Popularity Analysis",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "Analyzed Amazon sports nutrition data and built a linear regression model that explained 52.8% of the variation in review-based popularity."
+  },
+  {
+    "title": "Recipe Nutrition Analysis",
+    "year": 2025,
+    "image": "images/project-placeholder.svg",
+    "description": "Studied 83,782 recipes and 731,927 interactions, then improved protein prediction from an R² of 0.50 to 0.77 with a tuned random forest."
+  },
+  {
+    "title": "Responsive Portfolio Styling",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "A CSS practice project exploring flexible navigation, responsive grids, subgrid alignment, and accessible interaction states."
+  },
+  {
+    "title": "Exploratory Data Visualization",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "A future exploration of visual encodings that make patterns, distributions, and unusual observations easier to understand."
+  },
+  {
+    "title": "Categorical Data with D3",
+    "year": 2025,
+    "image": "images/project-placeholder.svg",
+    "description": "A planned interactive chart comparing categories with clear scales, labels, tooltips, and intentional color choices."
+  },
+  {
+    "title": "Quantitative Data with D3",
+    "year": 2025,
+    "image": "images/project-placeholder.svg",
+    "description": "A future visualization for exploring relationships between quantitative variables through marks, axes, and interaction."
+  },
+  {
+    "title": "Geospatial Mapping",
+    "year": 2024,
+    "image": "images/project-placeholder.svg",
+    "description": "A practice concept for presenting location-based data on an interactive map while preserving geographic context."
+  },
+  {
+    "title": "Interactive Analytics Dashboard",
+    "year": 2025,
+    "image": "images/project-placeholder.svg",
+    "description": "A planned dashboard that combines filters, summary metrics, and coordinated charts for open-ended data exploration."
+  },
+  {
+    "title": "A/B Testing Analysis",
+    "year": 2024,
+    "image": "images/project-placeholder.svg",
+    "description": "A future statistical analysis comparing two user experiences and communicating effect size alongside uncertainty."
+  },
+  {
+    "title": "Time Series Forecasting",
+    "year": 2023,
+    "image": "images/project-placeholder.svg",
+    "description": "A practice project for identifying trends and seasonality before evaluating predictions on unseen observations."
+  },
+  {
+    "title": "Recommendation Systems",
+    "year": 2024,
+    "image": "images/project-placeholder.svg",
+    "description": "A future comparison of popularity, content-based, and collaborative approaches to producing useful recommendations."
+  },
+  {
+    "title": "Text Sentiment Analysis",
+    "year": 2023,
+    "image": "images/project-placeholder.svg",
+    "description": "A planned natural-language project that transforms text into features and evaluates sentiment predictions responsibly."
+  }
+]

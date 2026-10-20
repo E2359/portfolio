@@ -195,7 +195,7 @@ time,
 
 .projects article {
   display: grid;
-  grid-row: span 3;
+  grid-row: span 4;
   grid-template-rows: subgrid;
   gap: 1em;
   padding: 1rem;
@@ -203,11 +203,13 @@ time,
 }
 
 .projects h2,
+.projects h3,
 .projects p {
   margin: 0;
 }
 
-.projects h2 {
+.projects h2,
+.projects h3 {
   font-size: 1.35rem;
 }
 
@@ -221,6 +223,76 @@ time,
 
 .projects p {
   color: var(--muted);
+}
+
+.projects .project-year {
+  width: fit-content;
+  padding: 0.2rem 0.55rem;
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  font-weight: 750;
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+
+.portfolio-section {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.portfolio-section h2 {
+  margin-top: 0;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+.latest-projects {
+  margin-top: 1.5rem;
+}
+
+.section-link {
+  margin-top: 1.25rem;
+  font-weight: 700;
+}
+
+.loading-message,
+.error-message {
+  grid-column: 1 / -1;
+  color: var(--muted);
+}
+
+#profile-stats {
+  max-width: 44rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4rem 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+#profile-stats dl > div {
+  min-width: 0;
+}
+
+#profile-stats dt {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+#profile-stats dd {
+  margin: 0;
+  color: var(--accent-dark);
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 800;
 }
 
 .resume-header {
@@ -329,5 +401,13 @@ button:focus-visible {
 
   form > label {
     gap: 0.35rem;
+  }
+
+  #profile-stats dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #profile-stats dd {
+    margin-bottom: 0.75rem;
   }
 }
