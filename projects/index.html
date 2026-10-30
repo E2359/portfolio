@@ -18,7 +18,22 @@
       explore as I continue building this portfolio.
     </p>
 
-    <div class="projects" aria-live="polite">
+    <section class="project-explorer" aria-labelledby="chart-heading">
+      <h2 id="chart-heading">Projects by year</h2>
+      <p id="chart-help">Choose a slice or a year to filter projects. Choose it again to show all years.</p>
+      <div class="chart-container">
+        <svg id="projects-pie-plot" viewBox="-50 -50 100 100" role="group" aria-label="Filter projects by year" aria-describedby="chart-help"></svg>
+        <ul class="legend" aria-label="Project years"></ul>
+      </div>
+      <p class="chart-empty" hidden>No matching projects to chart.</p>
+      <label for="project-search">Search projects</label>
+      <input id="project-search" class="searchBar" type="search" placeholder="Search titles, descriptions, or years…" aria-controls="project-results">
+      <div class="filter-summary">
+        <p class="results-summary" role="status"></p>
+        <button class="clear-filters" type="button" hidden>Clear filters</button>
+      </div>
+    </section>
+    <div id="project-results" class="projects">
       <p class="loading-message">Loading projects…</p>
     </div>
   </main>
