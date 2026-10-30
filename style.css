@@ -411,3 +411,35 @@ button:focus-visible {
     margin-bottom: 0.75rem;
   }
 }
+
+/* Lab 5: project explorer */
+.project-explorer { margin-top: 2rem; padding: clamp(1rem, 3vw, 1.75rem); background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; }
+.project-explorer h2 { margin-top: 0; }
+#chart-help, .results-summary, .chart-empty { color: var(--muted); }
+.chart-container { display: flex; align-items: center; gap: 2rem; }
+#projects-pie-plot { width: min(100%, 16rem); flex: 0 1 16rem; overflow: visible; margin-block: 1rem 2rem; }
+#projects-pie-plot path { cursor: pointer; transition: opacity 200ms, fill 200ms; stroke: var(--surface); stroke-width: 0.6; }
+#projects-pie-plot:has(path:hover) path:not(:hover) { opacity: 0.45; }
+#projects-pie-plot path:focus-visible { outline: none; stroke: var(--text); stroke-width: 1.5; }
+.legend { flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1rem; list-style: none; padding: 1rem; margin: 0; border: 1px solid var(--border); border-radius: 0.75rem; }
+.legend-item button { display: flex; align-items: center; gap: 0.5rem; width: 100%; color: var(--text); background: transparent; border: 1px solid transparent; padding: 0.6rem; text-align: left; }
+.legend-item button:hover { background: var(--accent-soft); }
+.swatch { display: inline-block; flex: 0 0 1rem; width: 1rem; height: 1rem; border-radius: 0.2rem; background: var(--color); }
+.legend-item.selected { --color: #d12b8f !important; }
+.legend-item.selected button { border-color: #d12b8f; font-weight: 750; }
+#projects-pie-plot path.selected { fill: #d12b8f; }
+.project-explorer label { display: block; font-weight: 650; margin-block: 1rem 0.5rem; }
+.searchBar { background: var(--background); color: var(--text); }
+.filter-summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 1rem; }
+.results-summary { margin: 0; }
+.clear-filters { font-size: 0.9rem; padding: 0.4rem 0.75rem; }
+.empty-message { grid-column: 1 / -1; }
+[hidden] { display: none !important; }
+button:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+@media (max-width: 36rem) {
+  .chart-container { flex-direction: column; gap: 0; }
+  #projects-pie-plot { flex-basis: auto; }
+  .legend { width: 100%; }
+  .projects { grid-template-columns: repeat(auto-fill, minmax(min(15em, 100%), 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { #projects-pie-plot path { transition: none; } }
