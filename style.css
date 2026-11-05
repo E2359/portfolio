@@ -443,3 +443,232 @@ button:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
   .projects { grid-template-columns: repeat(auto-fill, minmax(min(15em, 100%), 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) { #projects-pie-plot path { transition: none; } }
+
+/* Lab 6: repository code analysis */
+.meta-page {
+  max-width: 64rem;
+}
+
+.meta-panel {
+  margin-top: 2rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.meta-panel h2 {
+  margin-top: 0;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+}
+
+.meta-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.8rem;
+  margin: 1.25rem 0 0;
+}
+
+.meta-stats > div {
+  min-width: 0;
+  padding: 1rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.meta-stats dt,
+.language-breakdown dt {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.meta-stats dd {
+  margin: 0.35rem 0 0;
+  color: var(--accent-dark);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 800;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.chart-description,
+.muted {
+  color: var(--muted);
+}
+
+.chart-shell {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+}
+
+.chart-shell svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  color: var(--muted);
+  font: inherit;
+}
+
+.chart-shell .gridlines line {
+  stroke: var(--border);
+  stroke-opacity: 0.7;
+}
+
+.chart-shell .gridlines path {
+  display: none;
+}
+
+.chart-shell .domain,
+.chart-shell .tick line {
+  stroke: var(--muted);
+}
+
+.chart-shell .tick text {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.chart-shell .axis-label {
+  fill: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.commit-dot {
+  cursor: crosshair;
+  stroke: var(--surface);
+  stroke-width: 1.5px;
+  transition: r 180ms ease, fill-opacity 180ms ease, stroke 180ms ease;
+}
+
+.commit-dot:hover,
+.commit-dot:focus-visible {
+  stroke: var(--text);
+  stroke-width: 2.5px;
+  outline: none;
+}
+
+.commit-dot.selected {
+  fill: #d12b8f;
+  fill-opacity: 1;
+  stroke: var(--surface);
+}
+
+.brush .overlay {
+  cursor: crosshair;
+}
+
+.brush .selection {
+  fill: var(--accent);
+  fill-opacity: 0.15;
+  stroke: var(--accent);
+  stroke-opacity: 0.9;
+  stroke-dasharray: 5 3;
+}
+
+.selection-count {
+  margin: 1rem 0 0;
+  color: var(--accent-dark);
+  font-weight: 750;
+}
+
+.language-panel {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.language-panel h3 {
+  margin-top: 0;
+}
+
+.language-breakdown {
+  display: grid;
+  grid-template-columns: minmax(5rem, 0.5fr) 2fr;
+  gap: 0.45rem 1rem;
+  margin: 1rem 0 0;
+}
+
+.language-breakdown dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto minmax(8rem, 1fr);
+  gap: 0.35rem 0.75rem;
+  margin: 0;
+  padding: 1rem 1.15rem;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+  transition: opacity 160ms ease, visibility 160ms ease;
+}
+
+dl.info dt {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+dl.info dd {
+  min-width: 0;
+  margin: 0;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  top: 1rem;
+  left: 1rem;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 2rem));
+}
+
+@media (max-width: 36rem) {
+  .chart-shell {
+    padding: 0.25rem;
+  }
+
+  .chart-shell .tick text {
+    font-size: 10px;
+  }
+
+  .language-breakdown {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .language-breakdown dd {
+    margin-bottom: 0.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .commit-dot,
+  dl.info {
+    transition: none;
+  }
+}
