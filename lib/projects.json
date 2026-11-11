@@ -1,5 +1,12 @@
 [
   {
+    "title": "Bike Watching: Boston Bluebikes",
+    "year": 2026,
+    "image": "images/project-placeholder.svg",
+    "description": "An interactive Mapbox and D3 map of Boston and Cambridge bike lanes, Bluebikes stations, and ride volume by time of day.",
+    "url": "bikewatching/"
+  },
+  {
     "title": "Sports Supplement Popularity Analysis",
     "year": 2026,
     "image": "images/project-placeholder.svg",
@@ -9,7 +16,7 @@
     "title": "Recipe Nutrition Analysis",
     "year": 2025,
     "image": "images/project-placeholder.svg",
-    "description": "Studied 83,782 recipes and 731,927 interactions, then improved protein prediction from an R² of 0.50 to 0.77 with a tuned random forest."
+    "description": "Studied 83,782 recipes and 731,927 interactions, then improved protein prediction from an R\u00b2 of 0.50 to 0.77 with a tuned random forest."
   },
   {
     "title": "Responsive Portfolio Styling",

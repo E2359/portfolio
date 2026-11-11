@@ -56,7 +56,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     const image = escapeHTML(resolveProjectImage(project.image));
 
     article.innerHTML = `
-      <${safeHeadingLevel}>${title}</${safeHeadingLevel}>
+      <${safeHeadingLevel}>${project.url ? `<a href="${escapeHTML(project.url.startsWith('/') ? project.url : BASE_PATH + project.url)}">${title}</a>` : title}</${safeHeadingLevel}>
       <img src="${image}" alt="Abstract chart thumbnail for ${title}">
       <p class="project-year">${year}</p>
       <p>${description}</p>

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An interactive map exploring Bluebikes traffic in Boston and Cambridge.">
+<title>Bike watching | Ye Teng</title>
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"><link rel="stylesheet" href="map.css">
+<script type="module" src="../global.js"></script><script type="module" src="map.js"></script>
+</head>
+<body><main>
+<p class="eyebrow">Geospatial visualization</p><h1>Bike watching</h1>
+<p class="intro">Explore Bluebikes stations and March 2024 ride patterns across Boston and Cambridge. Pan and zoom the map, then filter station traffic by time of day.</p>
+<section class="token-panel" aria-labelledby="token-title"><label id="token-title" for="token-input">Mapbox public access token</label><div class="token-row"><input id="token-input" type="password" autocomplete="off" placeholder="pk.…"><button id="load-map" type="button">Load map</button><button id="forget-token" type="button" class="secondary">Forget token</button></div><small>Your token is kept only in this browser’s local storage.</small></section>
+<section class="map-panel"><div class="map-heading"><div><h2>Bluebikes traffic</h2><p id="status" role="status">Add your public Mapbox token to load the map and data.</p></div><label class="time-control" for="time-slider">Time of day <output id="time-label">Any time</output><input id="time-slider" type="range" min="-1" max="1380" step="30" value="-1" disabled></label></div><div id="map"><svg aria-hidden="true"></svg><div id="map-overlay">Map will appear here after a token is added.</div></div><div class="legend" aria-label="Station traffic legend"><span><i class="arrivals"></i> More arrivals</span><span><i class="balanced"></i> Balanced</span><span><i class="departures"></i> More departures</span><span class="size-key">Circle size = ride volume</span></div></section>
+<p class="source-note">Sources: City of Boston and Cambridge bike lane GeoJSON; Bluebikes station locations and March 2024 trip records. Station circles are sized by rides and colored by departure share.</p>
+</main></body></html>
