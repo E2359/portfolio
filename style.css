@@ -672,3 +672,259 @@ dl.info[hidden]:not(:hover, :focus-within) {
     transition: none;
   }
 }
+
+/* Lab 8: time-filtered repository story and code units */
+.story-section {
+  margin-top: 3rem;
+}
+
+.story-heading {
+  max-width: 42rem;
+  margin-bottom: 1.25rem;
+}
+
+.story-heading h2 {
+  margin: 0.15rem 0 0.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.story-heading > p:last-child {
+  margin-bottom: 0;
+}
+
+.scrolly-layout {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.8fr) minmax(0, 1.5fr);
+  align-items: start;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.story-steps {
+  display: grid;
+  gap: 1rem;
+}
+
+.story-step {
+  min-height: 15rem;
+  padding: 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 0.3rem solid var(--border);
+  border-radius: 0.85rem;
+  opacity: 0.6;
+  transition: opacity 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.story-step.is-active {
+  border-left-color: var(--color-accent);
+  opacity: 1;
+  transform: translateX(0.2rem);
+}
+
+.story-step h3 {
+  margin: 0.25rem 0 1rem;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.3;
+}
+
+.story-step .eyebrow {
+  margin: 0;
+}
+
+.story-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sticky-column {
+  position: sticky;
+  top: 1rem;
+  min-width: 0;
+}
+
+.chart-panel {
+  margin-top: 0;
+  padding: clamp(0.85rem, 2vw, 1.35rem);
+}
+
+.chart-panel h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+.chart-panel .chart-description {
+  margin-top: 0.65rem;
+  font-size: 0.92rem;
+}
+
+.timeline-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  font-weight: 700;
+}
+
+.timeline-label output {
+  color: var(--accent-dark);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-filter {
+  display: block;
+  width: 100%;
+  margin: 0.65rem 0 0;
+  cursor: ew-resize;
+}
+
+.small-copy {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+}
+
+.chart-panel .chart-shell {
+  margin-top: 1rem;
+}
+
+.chart-panel .language-panel {
+  margin-top: 1rem;
+}
+
+.chart-panel .language-panel h4 {
+  margin: 0;
+}
+
+.chart-panel .language-breakdown {
+  font-size: 0.86rem;
+}
+
+.units-panel {
+  margin-top: 3rem;
+}
+
+.unit-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 750;
+}
+
+.legend-item i {
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--unit-color);
+  border-radius: 0.2rem;
+}
+
+.units-summary {
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.file-units {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.file-row {
+  min-width: 0;
+  padding: 0.95rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.file-row-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.file-row-heading h3 {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9rem;
+}
+
+.file-row-heading span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.code-units {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.14rem;
+  align-content: flex-start;
+}
+
+.code-unit {
+  width: 0.48rem;
+  height: 0.48rem;
+  flex: 0 0 0.48rem;
+  background: var(--unit-color);
+  border-radius: 0.11rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 56rem) {
+  .scrolly-layout {
+    grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
+  }
+
+  .sticky-column {
+    top: 0.5rem;
+  }
+
+  .story-step {
+    min-height: 18rem;
+  }
+}
+
+@media (max-width: 42rem) {
+  .scrolly-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky-column {
+    position: static;
+    grid-row: 1;
+  }
+
+  .story-steps {
+    grid-row: 2;
+  }
+
+  .story-step {
+    min-height: 10rem;
+  }
+
+  .chart-panel .language-panel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-step {
+    transition: none;
+  }
+}

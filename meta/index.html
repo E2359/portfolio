@@ -3,49 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="An interactive D3 analysis of the code and commit history in Ye Teng's portfolio repository.">
-  <title>Code analysis | Ye Teng</title>
+  <meta name="description" content="An interactive, scroll-driven story of the code and commits behind Ye Teng's portfolio.">
+  <title>Code, over time | Ye Teng</title>
   <link rel="stylesheet" href="../style.css">
   <script type="module" src="../global.js"></script>
   <script type="module" src="main.js"></script>
 </head>
 <body>
   <main class="meta-page">
-    <p class="eyebrow">Repository analytics</p>
+    <p class="eyebrow">Repository analytics · Lab 8</p>
     <h1>Code, over time.</h1>
     <p class="intro">
-      A closer look at the code that makes this portfolio work. Each point is a
-      commit that still contributes to the current codebase.
+      Scroll through the portfolio's Git history. The scatterplot reveals each
+      commit as it arrives, while the file map turns every line of code into a
+      small, color-coded unit.
     </p>
 
     <section class="meta-panel" aria-labelledby="summary-heading">
       <p class="eyebrow">At a glance</p>
-      <h2 id="summary-heading">Codebase summary</h2>
+      <h2 id="summary-heading">The codebase today</h2>
       <div id="stats" aria-live="polite">
         <p class="loading-message">Loading repository history…</p>
       </div>
     </section>
 
-    <section class="meta-panel chart-panel" aria-labelledby="chart-heading">
-      <p class="eyebrow">Commit activity</p>
-      <h2 id="chart-heading">When the code changed</h2>
-      <p id="chart-description" class="chart-description">
-        Each dot is a commit. Horizontal position shows the date; vertical
-        position shows the time of day. Dot area represents the number of
-        lines in that commit. Hover or focus a dot for details, or drag across
-        the plot to select a group.
-      </p>
-      <div id="chart" class="chart-shell" role="group" aria-describedby="chart-description">
-        <p class="loading-message">Preparing the commit chart…</p>
+    <section class="story-section" id="commit-story" aria-labelledby="story-heading">
+      <div class="story-heading">
+        <p class="eyebrow">A guided tour</p>
+        <h2 id="story-heading">A portfolio takes shape</h2>
+        <p class="muted">Scroll through the commit steps. The chart stays in view and adds each milestone to the timeline.</p>
       </div>
-      <p id="selection-count" class="selection-count" role="status" aria-live="polite">
-        No commits selected
+      <div class="scrolly-layout">
+        <div id="story-steps" class="story-steps" aria-label="Portfolio commit story">
+          <p class="loading-message">Building the story from the repository history…</p>
+        </div>
+        <div class="sticky-column">
+          <section class="meta-panel chart-panel" aria-labelledby="chart-heading">
+            <p class="eyebrow">Commit activity</p>
+            <h3 id="chart-heading">When the code changed</h3>
+            <p id="chart-description" class="chart-description">
+              Each dot is a commit. Date is on the horizontal axis, time of day
+              on the vertical axis, and dot size represents the current lines attributed to that commit.
+              Hover or focus a dot for its GitHub details; brush the plot to select commits.
+            </p>
+            <label class="timeline-label" for="commit-progress">
+              <span>Show history through</span>
+              <time id="commit-time" datetime="">Loading…</time>
+            </label>
+            <input id="commit-progress" class="time-filter" type="range" min="0" max="100" value="100" step="1" aria-describedby="time-help">
+            <p id="time-help" class="muted small-copy">Drag the slider or scroll the story to move through time.</p>
+            <div id="chart" class="chart-shell" role="group" aria-describedby="chart-description">
+              <p class="loading-message">Preparing the commit chart…</p>
+            </div>
+            <p id="selection-count" class="selection-count" role="status" aria-live="polite">No commits selected</p>
+            <section class="language-panel" aria-labelledby="language-heading">
+              <h4 id="language-heading">Languages in the selection</h4>
+              <p id="language-hint" class="muted">Brush over commits to see the line breakdown by file type.</p>
+              <dl id="language-breakdown" class="language-breakdown"></dl>
+            </section>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="meta-panel units-panel" aria-labelledby="units-heading">
+      <p class="eyebrow">The code, line by line</p>
+      <h2 id="units-heading">Race for the biggest file</h2>
+      <p class="chart-description">
+        Every square represents one line in the selected snapshot. Files are
+        ordered from most lines to fewest; colors identify the language.
+        Move through the story or use the slider to watch the files grow.
       </p>
-      <section class="language-panel" aria-labelledby="language-heading">
-        <h3 id="language-heading">Languages in the selection</h3>
-        <p id="language-hint" class="muted">Brush over commits to see the line breakdown by file type.</p>
-        <dl id="language-breakdown" class="language-breakdown"></dl>
-      </section>
+      <div id="unit-legend" class="unit-legend" aria-label="Code language colors"></div>
+      <p id="units-summary" class="units-summary" aria-live="polite"></p>
+      <div id="file-units" class="file-units" aria-live="polite">
+        <p class="loading-message">Preparing the file map…</p>
+      </div>
     </section>
 
     <dl id="commit-tooltip" class="info tooltip" aria-live="polite" hidden>
